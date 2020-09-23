@@ -1,0 +1,46 @@
+--------------------------------------------------------------------------------
+Evil Game RPG Engine
+--------------------------------------------------------------------------------
+
+by Keith R. Weimer
+Way Too Happy Software
+
+Please excuse my bad mastery of the English language. (I'm American :P)
+
+NOTICE: If your display is set to 640x480, you are forewarned.  Evil Game is designed to run on at least 800x600 (I don't understand how anyone can even stand that because I use 1280x1024 and love every minute of it) but can be easily modified to use 640x480 if needed.  The display output of 15x15 tiles is 480x480 pixels, so it is possible to make it fit.
+
+NOTICE: Error checking is completely turned off for debugging purposes so damn near anything will cause a complete crash.
+I'm not very good at using On Error Goto (it's retarded and I can't stand it) so I begin each procedure with On Error Resume Next and handle errors after they occur (which I consider better programming practices anyways if you don't have Try/Catch).  You can turn error checking on by replacing the commented On Error Resume Next lines with uncommented ones.
+
+--------------------------------------------------------------------------------
+
+Evil Game is ready to run and is fully loaded with an example map, tilesets, and animations as a demonstration.
+
+1. The first thing you want to do is get the server going.  Upon running, the Autoexec.egb (Evil Game Batch) file should run and bring the server online by loading a map and opening port 2468.  If port 2468 is in use, you should select a different port by typing: PORT (Number) in the console and clicking the Open button.
+
+2. The next step is to run the client.  As you can see the client is set to connect to localhost on port 2468.  If you had to change the port on the server, change it here too.  Upon sucessful connection, the login window will appear.  Any username/password combonation will work as long as you enter something as the username (there is no authentication system).  Upon login the map should display with the player in the middle (No, I'm not an uber fan of Inuyasha but my friend is and I stole his sprites he got off the internet).  Movement keys are the arrow keys on the keyboard.
+
+3. Now that the core of the engine has been demonstrated, lets get to the good stuff.  The map editor uses a MDI (multiple document interface) and follows most standards of design (I guess).  Map creation and editing is straight forward and easy so I should have to explain it.  I haven't implemented the clipboard yet, so don't bother trying.
+
+4. Resources are a pain in the ass.  Sorry about their current design, I'm planning on changing them.  The resource editor is lacking and I pretty much stopped working on it after it created what I needed.  It does everything it should but doesn't as well as it could.
+
+Currently there are two resource types: Evil Game Tilesets and Evil Game Animations.  I am planning on making a tileset (singular) file format and a ASCII text tilesets (plural) file format and putting the animations in with the tileset format.
+
+Evil Game Tilesets (.egt)
+-------------------------
+The tilesets file format is basically a list of tilesets each with a list of coordinates.  This allows for strange tilesets (ie 16x16 tiles mixed with 32x32 tiles) and takes off some overhead for the rendering.  Each tileset is associated with a coresponding bitmap (bitmaps only) as a source image.  There is a quickly designed (I mean quickly) wizard that will assist in building coordinates.
+
+Evil Game Animations (.ega)
+---------------------------
+The animations file format is similar in design to the tilesets file format except that instead of coordinates, there are a series of frames.  Each frame specifies the tileset and tile to be displayed.  There is little limit on the type of animations you can make (ie oscillating, repeating, going all over the damn place).
+
+--------------------------------------------------------------------------------
+What to expect in the 3rd installment
+--------------------------------------------------------------------------------
+
+More object oriented (going to use less structures/UDT)
+Better player movement (no tile skipping)
+Mobile NPC system
+Object system
+Integrated masking and layering
+Better tileset and animation file formats
